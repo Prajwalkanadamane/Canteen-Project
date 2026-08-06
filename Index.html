@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste & Table - Billing System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header class="app-header">
+        <div class="logo-area">
+            <div class="logo-icon">🍴</div>
+            <div>
+                <h1>Taste & Table</h1>
+                <p>Food billing & counter operations</p>
+            </div>
+        </div>
+        <nav class="top-nav">
+            <a href="#" class="active">Billing</a>
+            <a href="#">Operations</a>
+        </nav>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+        <!-- Left Panel: Menu -->
+        <section class="menu-panel">
+            <h2 class="section-title">COUNTER WORKSPACE</h2>
+            <h3 class="main-title">Build an order</h3>
+            
+            <div class="menu-grid" id="menu-container">
+                <!-- Food items will be injected here via JS -->
+            </div>
+        </section>
+
+        <!-- Right Panel: Cart -->
+        <aside class="cart-panel">
+            <div class="cart-header">
+                <h2>Current order</h2>
+                <span class="item-count" id="cart-count">0 items</span>
+            </div>
+            
+            <div class="cart-items" id="cart-container">
+                <p class="empty-state">Your order is empty. Add an item from the menu.</p>
+            </div>
+
+            <div class="cart-footer">
+                <div class="total-row">
+                    <span>Total</span>
+                    <span class="total-amount" id="cart-total">₹0.00</span>
+                </div>
+                
+                <div class="action-buttons" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="btn-primary" id="btn-proceed" style="margin-bottom: 0;">Proceed to Bill</button>
+                    <button class="btn-outline" id="btn-clear" style="width: 100%;">Clear Order</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Digital Bill Modal Overlay -->
+    <div class="bill-modal-overlay" id="bill-modal" style="display: none;">
+        <div class="bill-card" id="print-section">
+            <div class="bill-header">
+                <h2>Taste & Table</h2>
+                <p>Receipt #<span id="bill-number"></span></p>
+                <p id="bill-date"></p>
+            </div>
+            
+            <table class="bill-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="bill-items-body">
+                    <!-- Bill items injected here via billing.js -->
+                </tbody>
+            </table>
+
+            <div class="bill-footer">
+                <span>Grand Total: </span>
+                <span id="bill-grand-total">₹0.00</span>
+            </div>
+            
+            <div class="bill-thankyou">
+                <p>Thank you for your visit!</p>
+            </div>
+        </div>
+
+        <!-- Buttons outside the print area -->
+        <div class="modal-actions no-print">
+            <button class="btn-outline" id="btn-modal-close" style="background: white;">Cancel</button>
+            <button class="btn-secondary" id="btn-modal-print">Print Bill</button>
+        </div>
+    </div>
+
+    <!-- Note the two script files! -->
+    <script src="billing.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
